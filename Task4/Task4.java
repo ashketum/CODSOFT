@@ -1,3 +1,4 @@
+package Task4;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -25,8 +26,13 @@ public class Task4 {
 
         Double result = r1.getResult(from, to, amt);
 
+        if(result != -1){
+            
         System.out.println(amt + " " + from + " in " + to + " is : "+ result);
         
+        } else{
+            System.out.println("Wrong Input");
+        }
 
     }
 }
