@@ -28,23 +28,43 @@ public class ATM_Machine{
                     
                      System.out.print("Enter the amount to Deposit: ");
                 double amt = sc.nextDouble();
-               String depositonStatus = (user.depositAmount(amt)) ? "Sucessfull!!!" : "Unsuccessfull";
-                System.out.println("Deposition " + depositonStatus);
+                    try {
+                        System.out.println("Deposition Successfull!!!");
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Please Enter a Valid Amount");
+                    }catch(Exception e){
+                        // System.out.println("Something went wrong.");
+                        e.printStackTrace();
+                    }
                 
                     break;
                 case 2:
 
                       System.out.print("Enter the amount to Withdraw: ");
                  amt = sc.nextDouble();
-                String withdrawalStatus = (user.withdrawAmount(amt)) ? "Sucessfull!!!" : "Unsuccessfull";
-                System.out.println("Withdrawal " + withdrawalStatus);
+                   
+                    try {
+                      boolean status = user.withdraw(amt);
+                         if(status){
+                    System.out.println("Withdrawal Successfull!!!!");
+                 } else{
+                    System.out.println("Insufficient balance, Make Sure you have enough balance.");
+                    System.out.println("Your Account current have : " + user.checkBalance() + " INR");
+                 }
+
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Please Enter a Valid Amount");
+                    }catch(Exception e){
+                        // System.out.println("Something went wrong.");
+                        e.printStackTrace();
+                    }
 
                     break;
                 case 3:
 
                      System.out.println("Your Account's Status is as follows.");
                 double currBalance = user.checkBalance();
-                System.out.println("Your Account Currently have INR " + currBalance);
+                System.out.println("Your Account Currently have : " + currBalance + " INR");
                 
                     break;
                 case 4:
